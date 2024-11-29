@@ -36,7 +36,7 @@ const App = () => {
         try {
             const response = await axios.get('https://api64.ipify.org?format=json'); 
             const ip = response.data.ip;
-            const res = await axios.post('http://127.0.0.1:5000/get-location', { ip, email, phone });
+            const res = await axios.post('https://spam-loc.onrender.com/get-location', { ip, email, phone });
             setLocation({
                 city: res.data.city,
                 region: res.data.region,
@@ -51,7 +51,7 @@ const App = () => {
 
     const detectSpam = async () => {
         try {
-            const res = await axios.post('http://127.0.0.1:5000/detect', {
+            const res = await axios.post('https://spam-loc.onrender.com/detect', {
                 message,
                 location: location ? location.city : 'Unknown',
             });
